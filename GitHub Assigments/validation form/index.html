@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS Styles */
+        .form-container {
+            text-align: center;
+            border: 1px solid #00FF00; /* Light green border */
+            padding: 20px;
+            background: linear-gradient(45deg, #00FF00, #0000FF); /* Gradient background (light green and blue) */
+        }
+
+        .error-message {
+            color: red;
+        }
+
+        /* Style for the Register button */
+        .register-button {
+            background-color: #0074d9; /* Blue color */
+            color: #fff; /* Text color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer; /* Change cursor style to pointer */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <span class="error-message" id="nameError"></span><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br>
+            <span class="error-message" id="passwordError"></span><br>
+
+            <input type="submit" value="Register" class="register-button">
+        </form>
+    </div>
+
+    <script>
+        // JavaScript
+        function validateForm() {
+            // Reset error messages
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+
+            // Get input values
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+
+            // Validate name
+            if (name.trim() === '') {
+                document.getElementById('nameError').textContent = 'Name can\'t be empty';
+                return false;
+            }
+
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

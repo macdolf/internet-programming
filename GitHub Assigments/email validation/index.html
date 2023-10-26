@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS Styles */
+        .form-container {
+            text-align: center;
+        }
+
+        .feedback {
+            color: red;
+        }
+
+        /* Style for the Validate button */
+        .validate-button {
+            background-color: #FF6666; /* Light red color */
+            color: #fff; /* Text color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer; /* Change cursor style to pointer */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Email Validation</h2>
+        <label for="email">Email:</label>
+        <input type="text" id="email"><br>
+        <button class="validate-button" onclick="validateEmail()">Validate</button>
+        <p class="feedback" id="feedback"></p>
+    </div>
+
+    <script>
+        // JavaScript
+        function validateEmail() {
+            const email = document.getElementById('email').value;
+            const feedback = document.getElementById('feedback');
+
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (email.match(emailRegex)) {
+                feedback.textContent = 'Email is valid!';
+            } else {
+                feedback.textContent = 'Invalid email format. Please enter a valid email address.';
+            }
+        }
+    </script>
+</body>
+</html>

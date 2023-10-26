@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS Styles */
+        .image-slider-container {
+            position: relative;
+            text-align: center;
+            max-width: 300px; /* Adjust the size of the image box */
+            margin: 0 auto; /* Center the image box */
+        }
+
+        .image-slider {
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        .image-box {
+            max-width: 100%; /* Image box takes full width */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-slider img {
+            width: 100%;
+        }
+
+        .slider-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .slider-controls button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .slider-controls button.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-slider-container">
+        <div class="slider-controls">
+            <button id="prevBtn" onclick="prevImage()">&#60;</button>
+            <div class="image-slider">
+                <div class="image-box">
+                    <img src="images/image1.jpg" alt="Image 1">
+                    <img src="images/image2.jpg" alt="Image 2">
+                    <img src="images/image3.png" alt="Image 3">
+                </div>
+            </div>
+            <button id="nextBtn" onclick="nextImage()">&#62;</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript
+        let currentImage = 0;
+        const images = document.querySelectorAll('.image-slider img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showImage(index) {
+            images.forEach((image, i) => {
+                if (i === index) {
+                    image.style.display = 'block';
+                } else {
+                    image.style.display = 'none';
+                }
+            });
+
+            currentImage = index;
+            updateButtonState();
+        }
+
+        function nextImage() {
+            if (currentImage < images.length - 1) {
+                showImage(currentImage + 1);
+            }
+        }
+
+        function prevImage() {
+            if (currentImage > 0) {
+                showImage(currentImage - 1);
+            }
+        }
+
+        function updateButtonState() {
+            prevBtn.classList.toggle('disabled', currentImage === 0);
+            nextBtn.classList.toggle('disabled', currentImage === images.length - 1);
+        }
+
+        // Show the first image initially
+        showImage(currentImage);
+    </script>
+</body>
+</html>
+

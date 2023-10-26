@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS Styles */
+        .feedback {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Password Comparison</h2>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password"><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword"><br>
+
+    <button onclick="checkPassword()">Submit</button>
+
+    <p class="feedback" id="feedback"></p>
+
+    <script>
+        // JavaScript
+        const originalPassword = "12345"; // Replace with your original password
+
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const feedback = document.getElementById('feedback');
+
+            if (password === originalPassword) {
+                feedback.textContent = 'Password matches!';
+            } else {
+                feedback.textContent = 'Wrong password. Please re-type the password.';
+            }
+
+            if (password !== confirmPassword) {
+                feedback.textContent = 'Passwords do not match. Please re-type the password.';
+            }
+        }
+    </script>
+</body>
+</html>
